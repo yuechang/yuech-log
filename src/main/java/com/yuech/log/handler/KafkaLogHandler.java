@@ -2,7 +2,7 @@
 package com.yuech.log.handler;
 
 import com.yuech.log.converter.KafkaAccessLogConverter;
-import com.yuech.log.eunms.AccessLogTypeEnum;
+import com.yuech.log.eunms.LogTypeEnum;
 import com.yuech.log.model.AccessLogRequest;
 import com.yuech.log.service.KafkaAccessLogService;
 import jakarta.annotation.Resource;
@@ -23,9 +23,11 @@ public class KafkaLogHandler extends AbstractLogHandler {
 
     @Override
     public boolean doRecordLog(AccessLogRequest request) {
-        if (AccessLogTypeEnum.KAFKA_LOG.equals(request.getType())) {
-            return kafkaAccessLogService.save(KafkaAccessLogConverter.dto2do(request));
-        }
-        return true;
+        return kafkaAccessLogService.save(KafkaAccessLogConverter.dto2do(request));
+    }
+
+    @Override
+    public boolean support(LogTypeEnum logType) {
+        return LogTypeEnum.KAFKA_LOG.equals(logType);
     }
 }

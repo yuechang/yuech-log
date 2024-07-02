@@ -2,7 +2,7 @@
 package com.yuech.log.handler;
 
 import com.yuech.log.converter.ReturnAccessLogConverter;
-import com.yuech.log.eunms.AccessLogTypeEnum;
+import com.yuech.log.eunms.LogTypeEnum;
 import com.yuech.log.model.AccessLogRequest;
 import com.yuech.log.service.ReturnAccessLogService;
 import jakarta.annotation.Resource;
@@ -23,9 +23,11 @@ public class ReturnLogHandler extends AbstractLogHandler {
 
     @Override
     public boolean doRecordLog(AccessLogRequest request) {
-        if (AccessLogTypeEnum.RETURN_LOG.equals(request.getType())) {
-            return returnAccessLogService.save(ReturnAccessLogConverter.dto2do(request));
-        }
-        return true;
+        return returnAccessLogService.save(ReturnAccessLogConverter.dto2do(request));
+    }
+
+    @Override
+    public boolean support(LogTypeEnum logType) {
+        return LogTypeEnum.RETURN_LOG.equals(logType);
     }
 }

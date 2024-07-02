@@ -1,7 +1,7 @@
 /* Copyright © 2022 Yuech and/or its affiliates. All rights reserved. */
 package com.yuech.log.model;
 
-import com.yuech.log.eunms.AccessLogTypeEnum;
+import com.yuech.log.eunms.LogTypeEnum;
 import lombok.Data;
 
 /**
@@ -22,7 +22,7 @@ public class AccessLogRequest {
     /**
      * 日志类型
      */
-    private AccessLogTypeEnum type;
+    private LogTypeEnum type;
 
     /**
      * 请求参数

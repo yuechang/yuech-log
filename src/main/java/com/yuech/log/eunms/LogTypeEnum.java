@@ -11,7 +11,7 @@ import lombok.Getter;
  * @date 2024-06-23 10:06
  */
 @Getter
-public enum AccessLogTypeEnum {
+public enum LogTypeEnum {
 
     /**
      * kafka消息日志
@@ -41,7 +41,7 @@ public enum AccessLogTypeEnum {
     private final String desc;
 
 
-    AccessLogTypeEnum(String code, String desc) {
+    LogTypeEnum(String code, String desc) {
         this.code = code;
         this.desc = desc;
     }

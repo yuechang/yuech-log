@@ -44,4 +44,25 @@ public class JacksonUtils<T> {
         return t;
     }
 
+    /**
+     * 将对象 转化成 JSON串
+     *
+     * @param object  对象
+     * @return JSON串
+     */
+    public static String toJson(Object object) {
+
+        if (object == null) {
+            return StringUtils.EMPTY;
+        }
+
+        String json = StringUtils.EMPTY;
+        try {
+            json = OBJECT_MAPPER.writeValueAsString(object);
+        } catch (Exception e ) {
+            log.error("将对象:[" + object.toString() + "]转字符串异常", e);
+        }
+        return json;
+    }
+
 }
